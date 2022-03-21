@@ -65,7 +65,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mahasiswa</h5>
                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                          <span aria-hidden="true">&times;</span>
                      </button>
@@ -114,30 +114,6 @@
             </div>
 @endsection
 
-@section('content1')
-
-        <div class="row">
-            <div class="col-6">
-                <h1>Data Mahasiswa</h1>
-            </div>
-
-            <div class="col-6">
-                    <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Tambah mahasiswa
-                    </button>
-            </div>
-            
-            <table class="table table-hover">
-                <tr>
-                   
-                </tr>
-               
-            </table>
-        </div>
-    </div>
-
-
-@endsection
 @section('footer')
 <script>
 
