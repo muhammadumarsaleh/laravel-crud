@@ -1,4 +1,4 @@
 @extends('layouts.main')
 @section('content')
-<h1><strong>AKU PASTI BISA INSYAAALLAH...!!!</strong></h1>
+<h1>AKU PASTI BISA INSYAAALLAH...!!!</h1>
 @endsection
