@@ -14,7 +14,9 @@ class AuthController extends Controller
     public function postlogin(Request $request){
         $credentials = $request->validate([
             'email' => ['required', 'email:dns'],
-            'password' => 'required'
+            'password' => 'required',
+
+
         ]);
 
     if(Auth::attempt($credentials)) {

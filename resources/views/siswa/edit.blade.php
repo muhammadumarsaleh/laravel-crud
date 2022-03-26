@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="panel-body">
                                 <form action="/siswa/{{$siswa->id}}/update" method="POST" enctype="multipart/form-data">
-                                        {{ csrf_field() }} 
+                                        @csrf 
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
                                                     <input name="nama_depan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Depan" value="{{ $siswa->nama_depan }}">

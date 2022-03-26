@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SiswaController extends Controller
 {
@@ -29,14 +31,37 @@ class SiswaController extends Controller
     }
 
     public function update(Request $request, $id){
-        $siswa = siswa::find($id)->update($request->all());
+        
+        // dd($request->all());
+        $siswa = siswa::find($id);
+        $siswa->update($request->all());
         if($request->hasFile('avatar')){
             $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
-            ddd($siswa->avatar);
         }
+
         return redirect('/siswa')->with('sukses', 'Data berhasil diupdate');
+
+
+
+
+
+        // $siswa = siswa::find($id)->update($request->all());
+        // if($request->file('avatar')) {
+        //     $siswa->avatar = $request->file('avatar')->store('profile');
+        // }
+        
+        // return $request->file('avatar')->store('profile');
+
+        // if($request->hasFile('avatar')){
+        //     $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+        //     // $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+        //     // $siswa->save();
+        // }
+
+        // dd($siswa);
+        // return redirect('/siswa')->with('sukses', 'Data berhasil diupdate');
     }
 
     public function delete($id){

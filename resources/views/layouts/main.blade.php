@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<!-- bermasalah dilink bootstrap baris 12 dan 16 tercomment -->
+<!-- bermasalah dilink bootstrap baris 12 dan 16 dan 25 tercomment -->
 
 <head>
 	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
@@ -32,7 +32,7 @@
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
-		@include('layouts.includes.navbar')
+		@include('layouts.includes.navbar') 
 		<!-- END NAVBAR -->
 		<!-- LEFT SIDEBAR -->
 		@include('layouts.includes.sidebar')

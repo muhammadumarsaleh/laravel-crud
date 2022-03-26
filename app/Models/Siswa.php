@@ -11,4 +11,12 @@ class Siswa extends Model
 
     protected $table = 'siswa';
     protected $guarded = ['id'];
+
+    public function getAvatar(){
+        if(!$this->avatar){
+            return asset('images/default.png');
+        }
+
+        return asset('images/'.$this->avatar);
+    }
 }
