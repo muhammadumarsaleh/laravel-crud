@@ -24,8 +24,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     Route::get('/siswa', [SiswaController::class, 'index']);
     Route::post('/siswa/create', [SiswaController::class, 'create']);
     Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit']);
@@ -34,4 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/siswa/{id}/profile', [SiswaController::class, 'profile']);
 });
 
+Route::group(['middleware' => ['auth', 'CheckRole:admin,siswa']], function(){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
 

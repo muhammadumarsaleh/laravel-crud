@@ -83,6 +83,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="Email" class="form-label">Email</label>
+                                <input name="email" type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+
+                            <div class="form-group">
                                 <div class="form-group">
                                 <label >Jenis Kelamin</label>
                                 </div>

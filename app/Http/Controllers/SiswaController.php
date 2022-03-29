@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\User;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// untuk menggunakan helper Str::random atau gunakan |'\Str::random'|
+use Illuminate\Support\Str;
 
 class SiswaController extends Controller
 {
@@ -21,7 +24,18 @@ class SiswaController extends Controller
     }
 
     public function create(Request $request){
-        siswa::create($request->all());
+        // insert ke table users
+        $user = new User;
+        $user->role = 'siswa';
+        $user->name = $request->nama_depan;
+        $user->email = $request->email;
+        $user->password = bcrypt('rahasia');
+        $user->remember_token = Str::random(40);
+        $user->save();
+        
+        // insert ke table siswa
+        $request->request->add(['user_id' => $user->id]);
+        $siswa = siswa::create($request->all());
         return redirect('/siswa')->with('sukses', 'Data berhasil ditambahkan!');
     }
 
@@ -31,8 +45,8 @@ class SiswaController extends Controller
     }
 
     public function update(Request $request, $id){
-        
-        // dd($request->all());
+
+        // $siswa = siswa::find($id)->update($request->all()); 
         $siswa = siswa::find($id);
         $siswa->update($request->all());
         if($request->hasFile('avatar')){
@@ -40,28 +54,8 @@ class SiswaController extends Controller
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
         }
-
         return redirect('/siswa')->with('sukses', 'Data berhasil diupdate');
 
-
-
-
-
-        // $siswa = siswa::find($id)->update($request->all());
-        // if($request->file('avatar')) {
-        //     $siswa->avatar = $request->file('avatar')->store('profile');
-        // }
-        
-        // return $request->file('avatar')->store('profile');
-
-        // if($request->hasFile('avatar')){
-        //     $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
-        //     // $siswa->avatar = $request->file('avatar')->getClientOriginalName();
-        //     // $siswa->save();
-        // }
-
-        // dd($siswa);
-        // return redirect('/siswa')->with('sukses', 'Data berhasil diupdate');
     }
 
     public function delete($id){
