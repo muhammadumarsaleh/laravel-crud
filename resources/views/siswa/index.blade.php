@@ -71,20 +71,35 @@
                      </button>
                 </div>
                 <div class="modal-body">
-                <form action="/siswa/create" method="POST">
+                <form action="/siswa/create" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
-                                <input name="nama_depan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Depan">
+                                <input name="nama_depan" type="text" class="form-control @error('nama_depan') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Depan" required autofocus value="{{ old('nama_depan') }}">
+                                @error('nama_depan')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail2" class="form-label">Nama Belakang</label>
-                                <input name="nama_belakang" type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Nama Belakang">
+                                <input name="nama_belakang" type="text" class="form-control @error('nama_belakang') is-invalid @enderror" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Nama Belakang" value="{{ old('nama_belakang') }}">
+                                @error('nama_belakang')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="Email" class="form-label">Email</label>
-                                <input name="email" type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Email">
+                                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="Email" aria-describedby="emailHelp" placeholder="Email" value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -92,21 +107,40 @@
                                 <label >Jenis Kelamin</label>
                                 </div>
                                 <div>
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="inlineRadio1" value="L">
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="inlineRadio1" value="L" {{ (old('jenis_kelamin') == 'L') ? 'selected' : '' }}>
                                 <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
                             
-                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="inlineRadio2" value="P">
+                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="inlineRadio2" value="P" {{ (old('jenis_kelamin') == 'P') ? 'selected' : '' }}>
                                 <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                                 </div>
                             </div>
         
                             <div class="form-group">
                                 <label for="exampleInputEmail3" class="form-label">Agama</label>
-                                <input name="agama" type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Agama">
+                                <input name="agama" type="text" class="form-control @error('agama') is-invalid @enderror" id="exampleInputEmail3" aria-describedby="emailHelp" place holder="Agama" value="{{ old('agama') }}">
+                                @error('agama')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="floatingTextarea2">Alamat</label>
-                                <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Masukkan Alamat" id="floatingTextarea2" style="height: 100px">{{ old('alamat') }}</textarea>
+                                @error('alamat')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="avatar">Avatar</label>
+                                <input type="file" name="avatar" class="form-control @error('avatar') is-invalid @enderror" id="avatar">
+                                @error('avatar')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             
                         </div>
