@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use App\Models\User;
+use App\Models\Mapel;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -82,7 +83,22 @@ class SiswaController extends Controller
 
     public function profile($id){
         $siswa = siswa::find($id);
-        return view('siswa.profile', ['siswa' => $siswa]);
+        $matapelajaran = mapel::all();
+        // dd($mapel);
+        return view('siswa.profile',[
+        'siswa' => $siswa,
+        'matapelajaran' => $matapelajaran
+    ]);
+    }
+
+    public function addnilai(Request $request, $id) {
+        $siswa = siswa::find($id);
+        if($siswa->mapel()->where('mapel_id', $request->mapel)->exists()){
+            return redirect('siswa/'.$id.'/profile')->with('error', 'Data mata pelajaran sudah ada');
+        }
+        $siswa->mapel()->attach($request->mapel, ['nilai' => $request->nilai]);
+
+        return redirect('siswa/'.$id.'/profile')->with('sukses', 'Data Nilai Berhasil Diinput');
     }
     
 }
