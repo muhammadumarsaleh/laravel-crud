@@ -61,7 +61,7 @@
 							<!-- END LEFT COLUMN -->
 							<!-- RIGHT COLUMN -->
 							<div class="profile-right">
-								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+								<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
 									Tambah Nilai
 								</button>
 								<!-- Striped Row -->
@@ -104,20 +104,20 @@
 		</div>
         <!-- END MAIN -->
 
-		<!-- MODAL TAMBAH NILAI -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Tambah Nilai</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form action="/siswa/{{$siswa->id}}/addnilai" method="POST">
+	<!-- MODAL TAMBAH NILAI -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>Tambahkan Nilai</strong></h4>
+    	</div>
+    	<div class="modal-body">
+		<form action="/siswa/{{$siswa->id}}/addnilai" method="POST">
 				@csrf
 				<div class="form-group">
 					<label for="mapel">Mapel Pelajaran</label>
-					<select name="mapel" class="form-select" aria-label="Default select example" id="mapel">
+					<select name="mapel" class="form-control" aria-label="Default select example" id="mapel">
 						@foreach($matapelajaran as $mp)
 							<option value="{{$mp->id}}">{{$mp->nama}}</option>
 						@endforeach
@@ -132,12 +132,12 @@
                             </div>
                         @enderror
                  </div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Simpan</button>
-				</form>
-				</div>
-			</div>
-		</div>
-	</div>
+      		</div>
+    	<div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+	</form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
