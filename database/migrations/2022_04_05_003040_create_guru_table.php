@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mapels', function (Blueprint $table) {
+        Schema::create('gurus', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
             $table->string('nama');
-            $table->string('semester');
-            $table->foreignId('guru_id');
+            $table->string('telepon');
+            $table->text('alamat');
             $table->timestamps();
         });
-        // model mapel belum migration ulang setelah dimasukkan guru_id
-
     }
 
     /**
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mapels');
+        Schema::dropIfExists('gurus');
     }
 };

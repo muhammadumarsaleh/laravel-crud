@@ -1,9 +1,11 @@
  <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     Route::post('/siswa/{id}/update', [SiswaController::class, 'update']);
     Route::get('/siswa/{id}/profile', [SiswaController::class, 'profile']);
     Route::post('/siswa/{id}/addnilai', [SiswaController::class, 'addnilai']);
+    Route::get('/guru/{id}/profile', [GuruController::class, 'profile']);
+    Route::get('siswa/{id}/{idmapel}/deletenilai', [SiswaController::class, 'deletenilai']);
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin,siswa']], function(){

@@ -112,5 +112,11 @@ class SiswaController extends Controller
 
         return redirect('siswa/'.$id.'/profile')->with('sukses', 'Data Nilai Berhasil Diinput');
     }
+
+    public function deletenilai($idsiswa, $idmapel){
+        $siswa = siswa::find($idsiswa);
+        $siswa->mapel()->detach($idmapel);
+        return redirect()->back()->with('sukses', 'Data nilai berhasil dihapus');
+    }
     
 }
