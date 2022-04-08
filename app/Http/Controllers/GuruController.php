@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 
 class GuruController extends Controller
 {
-    public function profile($id){
-        $guru = Guru::find($id);
+    public function profile(guru $guru){
         return view('guru.profile', ['guru' => $guru]);
     }
 }

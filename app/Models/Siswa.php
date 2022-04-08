@@ -31,8 +31,10 @@ class Siswa extends Model
         foreach($this->mapel as $mapel){
             $total += $mapel->pivot->nilai;
         $hitung++;
-        } 
-        return round($total/$hitung);
+        }
+        if($total > 0 && $hitung > 0){
+            return round($total/$hitung);
+        }
     }
 
     public function namaLengkap(){

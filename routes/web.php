@@ -30,13 +30,13 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     Route::get('/siswa', [SiswaController::class, 'index']);
     Route::post('/siswa/create', [SiswaController::class, 'create']);
-    Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit']);
-    Route::get('/siswa/{id}/delete', [SiswaController::class, 'delete']);
-    Route::post('/siswa/{id}/update', [SiswaController::class, 'update']);
-    Route::get('/siswa/{id}/profile', [SiswaController::class, 'profile']);
-    Route::post('/siswa/{id}/addnilai', [SiswaController::class, 'addnilai']);
-    Route::get('/guru/{id}/profile', [GuruController::class, 'profile']);
-    Route::get('siswa/{id}/{idmapel}/deletenilai', [SiswaController::class, 'deletenilai']);
+    Route::get('/siswa/{siswa}/edit', [SiswaController::class, 'edit']);
+    Route::get('/siswa/{siswa}/delete', [SiswaController::class, 'delete']);
+    Route::post('/siswa/{siswa}/update', [SiswaController::class, 'update']);
+    Route::get('/siswa/{siswa}/profile', [SiswaController::class, 'profile']);
+    Route::post('/siswa/{siswa}/addnilai', [SiswaController::class, 'addnilai']);
+    Route::get('/guru/{guru}/profile', [GuruController::class, 'profile']);
+    Route::get('siswa/{siswa}/{mapel}/deletenilai', [SiswaController::class, 'deletenilai']);
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin,siswa']], function(){
