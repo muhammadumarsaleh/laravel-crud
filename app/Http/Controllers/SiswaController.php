@@ -56,7 +56,7 @@ class SiswaController extends Controller
     }
 
     public function edit(siswa $siswa){
-        // $siswa = siswa::find($id);
+       
         return view('siswa.edit', ['siswa' => $siswa]);
     }
 
@@ -73,6 +73,7 @@ class SiswaController extends Controller
     }
 
     public function delete(siswa $siswa){
+        // $siswa = siswa::find($id);
         $siswa->delete();
         return redirect('/siswa')->with('sukses', 'Data berhasil dihapus');
 
