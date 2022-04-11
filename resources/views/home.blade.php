@@ -8,6 +8,6 @@
 </head>
 <body>
     <p> ini home</p>
-    <a href="/login">kembali</a>
+    <a href="/">kembali</a>
 </body>
 </html>

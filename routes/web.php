@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,11 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
 
-Route::get('/', [AuthController::class, 'login']);
+Route::get('/', [SiteController::class, 'home']);
+Route::get('/about', [SiteController::class, 'about']);
+
+// Route::get('/', [AuthController::class, 'login']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/postlogin', [AuthController::class, 'postlogin']);
