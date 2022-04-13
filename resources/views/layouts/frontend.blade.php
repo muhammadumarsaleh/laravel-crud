@@ -104,24 +104,24 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-            <li class="active"><a href="index.html">Home</a></li>            
-            <li class="dropdown">
+            <li class="active"><a href="/">Home</a></li>            
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="course.html">Course Archive</a></li>                
                 <li><a href="course-detail.html">Course Detail</a></li>                
               </ul>
-            </li>           
-            <li><a href="gallery.html">Gallery</a></li>
-            <li class="dropdown">
+            </li>            -->
+            <!-- <li><a href="gallery.html">Gallery</a></li> -->
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="blog-archive.html">Blog Archive</a></li>                
                 <li><a href="blog-single.html">Blog Single</a></li>                
               </ul>
-            </li>            
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="404.html">404 Page</a></li>               
+            </li>             -->
+            <li><a href="/register">Daftar</a></li>
+            <!-- <li><a href="404.html">404 Page</a></li>                -->
             <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
           </ul>                     
         </div><!--/.nav-collapse -->        
@@ -129,6 +129,7 @@
     </nav>
   </section>
   <!-- End menu -->
+
   <!-- Start search box -->
   <div id="mu-search">
     <div class="mu-search-area">      
@@ -145,7 +146,9 @@
     </div>
   </div>
   <!-- End search box -->
+
   @yield('content')
+
   <!-- Start footer -->
   <footer id="mu-footer">
     <!-- start footer top -->

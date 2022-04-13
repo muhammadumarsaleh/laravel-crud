@@ -21,6 +21,9 @@ use App\Http\Controllers\SiteController;
 
 Route::get('/', [SiteController::class, 'home']);
 Route::get('/about', [SiteController::class, 'about']);
+Route::get('/register', [SiteController::class, 'register']);
+Route::post('/postregister', [SiteController::class, 'postregister']);
+
 
 // Route::get('/', [AuthController::class, 'login']);
 
