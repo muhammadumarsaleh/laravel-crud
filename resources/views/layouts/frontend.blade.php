@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Varsity | Home</title>
+    <title>{{config('sekolah.title')}}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('/frontend')}}/assets/img/favicon.ico" type="image/x-icon">
@@ -56,11 +56,11 @@
                 <div class="mu-header-top-left">
                   <div class="mu-top-email">
                     <i class="fa fa-envelope"></i>
-                    <span>info@markups.io</span>
+                    <span>{{config('sekolah.email')}}</span>
                   </div>
                   <div class="mu-top-phone">
                     <i class="fa fa-phone"></i>
-                    <span>(568) 986 652</span>
+                    <span>{{config('sekolah.telepon')}}</span>
                   </div>
                 </div>
               </div>
@@ -98,9 +98,9 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>Varsity</span></a>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>{{config('sekolah.nama_sekolah')}}</span></a>
           <!-- IMG BASED LOGO  -->
-          <!-- <a class="navbar-brand" href="index.html"><img src="{{asset('/frontend')}}/assets/img/logo.png" alt="logo"></a> -->
+          <!-- <a class="navbar-brand" href="/"><img src="{{config('sekolah.logo_sekolah')}}" width="100"></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">

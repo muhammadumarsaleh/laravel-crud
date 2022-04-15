@@ -7,14 +7,14 @@
     <div class="mu-slider-single">
       <div class="mu-slider-img">
         <figure>
-          <img src="{{asset('/frontend')}}/assets/img/slider/1.jpg" alt="img">
+          <img src="{{config('sekolah.gambar1')}}" alt="">
         </figure>
       </div>
       <div class="mu-slider-content">
-        <h4>Welcome To Varsity</h4>
+        <h4>{{ config('sekolah.welcome_message') }}</h4>
         <span></span>
-        <h2>We Will Help You To Learn</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
+        <h2>{{config('sekolah.message_slide1')}}</h2>
+        <p>{{config('sekolah.sub_message_slide1')}}</p>
         <a href="#" class="mu-read-more-btn">Read More</a>
       </div>
     </div>
@@ -23,14 +23,14 @@
     <div class="mu-slider-single">
       <div class="mu-slider-img">
         <figure>
-          <img src="{{asset('/frontend')}}/assets/img/slider/2.jpg" alt="img">
+          <img src="{{config('sekolah.gambar2')}}" alt="">
         </figure>
       </div>
       <div class="mu-slider-content">
-        <h4>Premiumu Quality Free Template</h4>
+        <h4>{{config('sekolah.welcome_message')}}</h4>
         <span></span>
-        <h2>Best Education Template Ever</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
+        <h2>{{config('sekolah.message_slide2')}}</h2>
+        <p>{{config('sekolah.sub_message_slide2')}}</p>
         <a href="#" class="mu-read-more-btn">Read More</a>
       </div>
     </div>
@@ -39,14 +39,14 @@
     <div class="mu-slider-single">
       <div class="mu-slider-img">
         <figure>
-          <img src="{{asset('/frontend')}}/assets/img/slider/3.jpg" alt="img">
+          <img src="{{config('sekolah.gambar3')}}" alt="">
         </figure>
       </div>
       <div class="mu-slider-content">
-        <h4>Exclusivly For Education</h4>
+        <h4>{{config('sekolah.welcome_message')}}</h4>
         <span></span>
-        <h2>Education For Everyone</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
+        <h2>{{config('sekolah.message_slide3')}}</h2>
+        <p>{{config('sekolah.sub_message_slide3')}}</p>
         <a href="#" class="mu-read-more-btn">Read More</a>
       </div>
     </div>
@@ -62,22 +62,22 @@
             <!-- Start single service -->
             <div class="mu-service-single">
               <span class="fa fa-book"></span>
-              <h3>Learn Online</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima officiis, deleniti dolorem exercitationem praesentium, est!</p>
+              <h3>{{config('sekolah.fitur3')}}</h3>
+              <p>{{config('sekolah.sub_fitur3')}}</p>
             </div>
             <!-- Start single service -->
             <!-- Start single service -->
             <div class="mu-service-single">
               <span class="fa fa-users"></span>
-              <h3>Expert Teachers</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima officiis, deleniti dolorem exercitationem praesentium, est!</p>
+              <h3>{{config('sekolah.fitur2')}}</h3>
+              <p>{{config('sekolah.sub_fitur2')}}</p>
             </div>
             <!-- Start single service -->
             <!-- Start single service -->
             <div class="mu-service-single">
               <span class="fa fa-table"></span>
-              <h3>Best Classrooms</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima officiis, deleniti dolorem exercitationem praesentium, est!</p>
+              <h3>{{config('sekolah.fitur1')}}</h3>
+              <p>{{config('sekolah.sub_fitur1')}}</p>
             </div>
             <!-- Start single service -->
           </div>
@@ -115,7 +115,7 @@
               <div class="col-lg-6 col-md-6">
                 <div class="mu-about-us-right">                            
                 <a id="mu-abtus-video" href="https://www.youtube.com/embed/HN3pm9qYAUs" target="mutube-video">
-                  <img src="{{asset('/frontend')}}/assets/img/about-us.jpg" alt="img">
+                  <img src="{{config('sekolah.gambar1')}}" alt="">
                 </a>                
                 </div>
               </div>
@@ -128,7 +128,7 @@
   <!-- End about us -->
 
   <!-- Start about us counter -->
-  <section id="mu-abtus-counter">
+  <section id="mu-abtus-counter" style="background: url('{{config('sekolah.gambar1')}}');" >
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -138,8 +138,8 @@
               <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="mu-abtus-counter-single">
                   <span class="fa fa-book"></span>
-                  <h4 class="counter">568</h4>
-                  <p>Subjects</p>
+                  <h4 class="counter">{{totalMapel()}}</h4>
+                  <p>Mapel</p>
                 </div>
               </div>
               <!-- End counter item -->
@@ -147,8 +147,8 @@
               <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="mu-abtus-counter-single">
                   <span class="fa fa-users"></span>
-                  <h4 class="counter">3500</h4>
-                  <p>Students</p>
+                  <h4 class="counter">{{totalSiswa()}}</h4>
+                  <p>Siswa</p>
                 </div>
               </div>
               <!-- End counter item -->
@@ -165,8 +165,8 @@
               <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="mu-abtus-counter-single no-border">
                   <span class="fa fa-user-secret"></span>
-                  <h4 class="counter">250</h4>
-                  <p>Teachers</p>
+                  <h4 class="counter">{{totalGuru()}}</h4>
+                  <p>Guru</p>
                 </div>
               </div>
               <!-- End counter item -->

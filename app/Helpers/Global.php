@@ -1,6 +1,7 @@
 <?php
 use App\Models\Siswa;
 use App\Models\Guru;
+use App\Models\Mapel;
 
 function ranking5Besar(){
     $siswa = siswa::all();
@@ -19,4 +20,8 @@ function totalSiswa(){
 function totalGuru(){
     $guru = guru::count();
     return $guru;
+}
+
+function totalMapel(){
+    return mapel::count();
 }
