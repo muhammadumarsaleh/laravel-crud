@@ -6,6 +6,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,10 +41,14 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
     Route::get('/siswa/{siswa}/profile', [SiswaController::class, 'profile']);
     Route::post('/siswa/{siswa}/addnilai', [SiswaController::class, 'addnilai']);
     Route::get('/guru/{guru}/profile', [GuruController::class, 'profile']);
-    Route::get('siswa/{siswa}/{mapel}/deletenilai', [SiswaController::class, 'deletenilai']);
+    Route::get('/siswa/{siswa}/{mapel}/deletenilai', [SiswaController::class, 'deletenilai']); 
+    Route::get('/posts/add', [PostController::class, 'addposts']);
+    Route::post('/posts/create', [PostController::class, 'create']);
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin,siswa']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::get('/posts/{post:slug}', [PostController::class, 'singlepost']);
 });
 

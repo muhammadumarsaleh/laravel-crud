@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Post;
 
 class SiteController extends Controller
 {
     public function home(){
-        return view('sites.home');
+        $posts = Post::all();
+        return view('sites.home', ['posts' => $posts]);
     }
 
     public function about(){

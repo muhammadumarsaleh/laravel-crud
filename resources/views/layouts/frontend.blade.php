@@ -121,6 +121,7 @@
               </ul>
             </li>             -->
             <li><a href="/register">Daftar</a></li>
+            <li><a href="/login">Login</a></li>
             <!-- <li><a href="404.html">404 Page</a></li>                -->
             <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
           </ul>                     

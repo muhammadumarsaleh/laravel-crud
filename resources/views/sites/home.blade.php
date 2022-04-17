@@ -556,70 +556,35 @@
           <div class="mu-from-blog-area">
             <!-- start title -->
             <div class="mu-title">
-              <h2>From Blog</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum vitae quae vero ut natus. Dolore!</p>
+              <h2>Blog Terbaru</h2>
+              <p>Informasi-informasi tentang sekolah kami bisa kalian baca di blog-blog yang ada dibawah</p>
             </div>
             <!-- end title -->  
             <!-- start from blog content   -->
             <div class="mu-from-blog-content">
               <div class="row">
+                @foreach($posts as $post)
                 <div class="col-md-4 col-sm-4">
                   <article class="mu-blog-single-item">
                     <figure class="mu-blog-single-img">
-                      <a href="#"><img src="{{asset('/frontend')}}/assets/img/blog/blog-1.jpg" alt="img"></a>
+                      <a href="#"><img src="{{$post->thumbnail()}}" alt="img"></a>
                       <figcaption class="mu-blog-caption">
-                        <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
+                        <h3><a href="#">{{$post->title}}</a></h3>
                       </figcaption>                      
                     </figure>
                     <div class="mu-blog-meta">
-                      <a href="#">By Admin</a>
-                      <a href="#">02 June 2016</a>
+                      <a href="#">Oleh {{$post->user->name}}</a>
+                      <a href="#">{{$post->created_at->diffForHumans()}}</a>
                       <span><i class="fa fa-comments-o"></i>87</span>
                     </div>
                     <div class="mu-blog-description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                      <a class="mu-read-more-btn" href="#">Read More</a>
+                      {!! $post->content !!}
+                      <br>
+                      <a class="mu-read-more-btn" href="/posts/{{$post->slug}}">Read More</a>
                     </div>
                   </article>
                 </div>
-                <div class="col-md-4 col-sm-4">
-                  <article class="mu-blog-single-item">
-                    <figure class="mu-blog-single-img">
-                      <a href="#"><img src="{{asset('/frontend')}}/assets/img/blog/blog-2.jpg" alt="img"></a>
-                      <figcaption class="mu-blog-caption">
-                        <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                      </figcaption>                      
-                    </figure>
-                    <div class="mu-blog-meta">
-                      <a href="#">By Admin</a>
-                      <a href="#">02 June 2016</a>
-                      <span><i class="fa fa-comments-o"></i>87</span>
-                    </div>
-                    <div class="mu-blog-description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                      <a class="mu-read-more-btn" href="#">Read More</a>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <article class="mu-blog-single-item">
-                    <figure class="mu-blog-single-img">
-                      <a href="#"><img src="{{asset('/frontend')}}/assets/img/blog/blog-3.jpg" alt="img"></a>
-                      <figcaption class="mu-blog-caption">
-                        <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                      </figcaption>                      
-                    </figure>
-                    <div class="mu-blog-meta">
-                      <a href="#">By Admin</a>
-                      <a href="#">02 June 2016</a>
-                      <span><i class="fa fa-comments-o"></i>87</span>
-                    </div>
-                    <div class="mu-blog-description">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                      <a class="mu-read-more-btn" href="#">Read More</a>
-                    </div>
-                  </article>
-                </div>
+                @endforeach
               </div>
             </div>     
             <!-- end from blog content   -->   
