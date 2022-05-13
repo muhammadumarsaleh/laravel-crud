@@ -14,11 +14,12 @@ use Illuminate\Support\Str;
 class SiswaController extends Controller
 {
     public function index(Request $request){
+
         if($request->has('cari')){
-         $data_siswa = siswa::where('nama_depan', 'LIKE', '%'.$request->cari.'%')->get();
+         $data_siswa = siswa::where('nama_depan', 'LIKE', '%'.$request->cari.'%')->paginate(20);
         }else{
             $data_siswa = siswa::all();
-        }
+        } 
         return view('siswa.index', [
             'data_siswa'=> $data_siswa
         ] );
@@ -112,6 +113,11 @@ class SiswaController extends Controller
     public function deletenilai(siswa $siswa, mapel $mapel){
         $siswa->mapel()->detach($mapel->id);
         return redirect()->back()->with('sukses', 'Data nilai berhasil dihapus');
+    }
+
+    public function getdatasiswa(){
+        $siswa = Siswa::all();
+        Datatable::eloquent($siswa)->toJson();
     }
     
 }

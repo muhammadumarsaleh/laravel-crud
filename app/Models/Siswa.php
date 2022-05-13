@@ -34,6 +34,8 @@ class Siswa extends Model
         }
         if($total > 0 && $hitung > 0){
             return round($total/$hitung);
+        } else {
+            return 0;
         }
     }
 

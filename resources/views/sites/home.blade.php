@@ -114,7 +114,7 @@
               </div>
               <div class="col-lg-6 col-md-6">
                 <div class="mu-about-us-right">                            
-                <a id="mu-abtus-video" href="https://www.youtube.com/embed/HN3pm9qYAUs" target="mutube-video">
+                <a id="mu-abtus-video" href="https://youtu.be/65_3VhVVk-c" target="mutube-video">
                   <img src="{{config('sekolah.gambar1')}}" alt="">
                 </a>                
                 </div>

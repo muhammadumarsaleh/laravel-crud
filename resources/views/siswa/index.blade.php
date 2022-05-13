@@ -23,7 +23,7 @@
                             </div>
                         </div>
                             <div class="panel-body">
-                             <table class="table table-hover">
+                             <table class="table table-hover" id="datatable">
                                 <thead>
                                     <tr>
                                         <th>NAMA DEPAN</th>
@@ -52,6 +52,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                
                         </div>
                     </div>
                         
@@ -156,7 +157,10 @@
 @section('footer')
 <script>
 
-    $('.delete').click(function(){
+    $(document).ready(function(){
+        $('#datatable').DataTable();
+
+        $('.delete').click(function(){
         var siswa_id = $(this).attr('siswa-id');
 
         Swal.fire({
@@ -178,5 +182,8 @@
         }
         });
     }); 
+    });
+
+    
 </script>
 @endsection
