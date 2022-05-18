@@ -26,6 +26,8 @@ Route::get('/register', [SiteController::class, 'register']);
 Route::post('/postregister', [SiteController::class, 'postregister']);
 
 
+
+
 // Route::get('/', [AuthController::class, 'login']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');

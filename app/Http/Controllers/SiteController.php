@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Models\Post;
+use App\Mail\NotifRegister;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
@@ -21,10 +22,6 @@ class SiteController extends Controller
         return view('sites.register');
     }
 
-    public function bocah(){
-        return view('sites.bocah');
-    }
-
     public function postregister(Request $request){
         // input pendaftar sebagai user dulu
         $user = new \App\Models\User;
@@ -38,6 +35,7 @@ class SiteController extends Controller
         $request->request->add(['user_id' => $user->id]);
         $siswa = \App\Models\Siswa::create($request->all());
 
+        \Mail::to($user->email)->send(new NotifRegister);
         return redirect('/')->with('sukses', 'Pendaftaran Berhasil');
     }
 
