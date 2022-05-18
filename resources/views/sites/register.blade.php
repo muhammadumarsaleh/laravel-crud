@@ -55,7 +55,7 @@
                     <div class="form-select" id="service-select"></div>
                     {!! Form::select('jenis_kelamin', ['' => 'Pilih Jenis Kelamin', 'L' => 'Laki-laki', 'P' => 'Perempuan'], 'L'); !!}
                     </div>
-                    <button class="mu-post-btn" style="text-align: center;" >Submit</button>
+                    <button class="mu-post-btn" style=" text-align: center;" >Submit</button>
                                  
                     <!-- <p class="form-submit">
                       <input type="submit" value="Send Message" class="mu-post-btn" name="submit">

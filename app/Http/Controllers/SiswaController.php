@@ -119,5 +119,10 @@ class SiswaController extends Controller
         $siswa = Siswa::all();
         Datatable::eloquent($siswa)->toJson();
     }
+
+    public function profilSaya() {
+        $siswa = auth()->user()->siswa;
+        return view('siswa.profilsaya', ["siswa" => $siswa]);
+    }
     
 }

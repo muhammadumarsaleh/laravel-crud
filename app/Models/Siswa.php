@@ -16,7 +16,6 @@ class Siswa extends Model
         if(!$this->avatar){
             return asset('images/default.png');
         }
-
         return asset('images/'.$this->avatar);
     }
 
@@ -41,5 +40,9 @@ class Siswa extends Model
 
     public function namaLengkap(){
         return $this->nama_depan. ' ' .$this->nama_belakang;
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
