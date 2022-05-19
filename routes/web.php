@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\SiteController;
-use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,11 +51,15 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
 
 Route::group(['middleware' => ['auth', 'CheckRole:siswa']], function() {
     Route::get('/profilsaya', [SiswaController::class, 'profilSaya']);
+
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:admin,siswa']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/posts', [PostController::class, 'index']);
     Route::get('/posts/{post:slug}', [PostController::class, 'singlepost']);
+    Route::get('/forum', [ForumController::class, 'index']);
+    Route::post('forum/create', [ForumController::class, 'create']);
+    Route::get('forum/{forum}/view', [ForumController::class, 'view']);
 });
 
