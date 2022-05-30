@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -14,7 +15,11 @@ class PostController extends Controller
     }
 
     public function singlepost(Post $post){
-        return view('posts.singlepost', ['post' => $post]);
+        $allpost = Post::all();
+        return view('posts.singlepost', [
+            'post' => $post,
+            'allpost' => $allpost
+        ]);
     }
 
     public function addposts(){
@@ -23,12 +28,17 @@ class PostController extends Controller
 
     public function create(Request $request){
         $post = Post::create([
+            'user_id' => auth()->user()->id,
+            'role' => $request->role,
             'title' => $request->title,
             'content' => $request->content,
+            'excerpt' => Str::of(strip_tags($request->content)
+            )->limit(90),
             'user_id' => auth()->user()->id,
             'thumbnail' => $request->thumbnail
+
         ]);
 
-        return redirect('/posts')->with('sukses', 'Post berhasil di submit');
+        return redirect('/posts')->with('sukses', 'Postingan berhasil dibuat');
     }
 }

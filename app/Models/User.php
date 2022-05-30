@@ -52,4 +52,12 @@ class User extends Authenticatable
     public function komentar() {
         return $this->hasMany(Komentar::class);
     }
+
+    public function tanggapan() {
+        return $this->hasMany(Tanggapan::class);
+    }
+
+    public function commentpost() {
+        return $this->hasMany(Commentpost::class);
+    }
 }

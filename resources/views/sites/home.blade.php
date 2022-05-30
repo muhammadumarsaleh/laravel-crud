@@ -492,54 +492,26 @@
         <div class="col-md-12">
           <div class="mu-testimonial-area">
             <div id="mu-testimonial-slide" class="mu-testimonial-content">
+
               <!-- start testimonial single item -->
+              @foreach($tanggapan as $tanggap)
               <div class="mu-testimonial-item">
                 <div class="mu-testimonial-quote">
                   <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
+                    <p>{{$tanggap->konten}}</p>
                   </blockquote>
                 </div>
                 <div class="mu-testimonial-img">
-                  <img src="{{asset('/frontend')}}/assets/img/testimonial-1.png" alt="img">
+                  <img src="{{$tanggap->user->siswa->getAvatar()}}" width="100" height="125" >
                 </div>
                 <div class="mu-testimonial-info">
-                  <h4>John Doe</h4>
-                  <span>Happy Student</span>
+                  <h4>{{ $tanggap->user->name }}</h4>
+                  <span>{{ $tanggap->user->role }}</span>
                 </div>
               </div>
+              @endforeach
               <!-- end testimonial single item -->
-              <!-- start testimonial single item -->
-              <div class="mu-testimonial-item">
-                <div class="mu-testimonial-quote">
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
-                  </blockquote>
-                </div>
-                <div class="mu-testimonial-img">
-                  <img src="{{asset('/frontend')}}/assets/img/testimonial-3.png" alt="img">
-                </div>
-                <div class="mu-testimonial-info">
-                  <h4>Rebaca Michel</h4>
-                  <span>Happy Parent</span>
-                </div>
-              </div>
-              <!-- end testimonial single item -->
-              <!-- start testimonial single item -->
-              <div class="mu-testimonial-item">
-                <div class="mu-testimonial-quote">
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum soluta aperiam blanditiis obcaecati eveniet aliquam consequatur nobis eaque id.</p>
-                  </blockquote>
-                </div>
-                <div class="mu-testimonial-img">
-                  <img src="{{asset('/frontend')}}/assets/img/testimonial-2.png" alt="img">
-                </div>
-                <div class="mu-testimonial-info">
-                  <h4>Stev Smith</h4>
-                  <span>Happy Student</span>
-                </div>
-              </div>
-              <!-- end testimonial single item -->
+
             </div>
           </div>
         </div>
@@ -569,16 +541,16 @@
                     <figure class="mu-blog-single-img">
                       <a href="#"><img src="{{$post->thumbnail()}}" alt="img"></a>
                       <figcaption class="mu-blog-caption">
-                        <h3><a href="#">{{$post->title}}</a></h3>
+                        <h3><a href="/posts/{{$post->slug}} ">{{$post->title}}</a></h3>
                       </figcaption>                      
                     </figure>
                     <div class="mu-blog-meta">
-                      <a href="#">Oleh {{$post->user->name}}</a>
-                      <a href="#">{{$post->created_at->diffForHumans()}}</a>
+                      <a href="">Oleh {{$post->user->name}}</a>
+                      <a href="">{{$post->created_at->diffForHumans()}}</a>
                       <span><i class="fa fa-comments-o"></i>87</span>
                     </div>
                     <div class="mu-blog-description">
-                      {!! $post->content !!}
+                      {!! $post->excerpt !!}
                       <br>
                       <a class="mu-read-more-btn" href="/posts/{{$post->slug}}">Read More</a>
                     </div>
@@ -596,3 +568,4 @@
   <!-- End from blog -->
 
 @endsection
+

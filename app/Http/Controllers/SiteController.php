@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Post;
+use App\Models\Tanggapan;
 use App\Mail\NotifRegister;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -10,8 +12,14 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function home(){
+        $tanggapan = Tanggapan::all();
         $posts = Post::all();
-        return view('sites.home', ['posts' => $posts]);
+        $guru = Guru::all();
+        return view('sites.home', [
+            'posts' => $posts,
+            'guru' => $guru,
+            'tanggapan' => $tanggapan
+        ]);
     }
 
     public function about(){

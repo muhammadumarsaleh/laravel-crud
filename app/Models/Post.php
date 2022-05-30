@@ -10,7 +10,6 @@ class Post extends Model
 {
     use Sluggable;
     use HasFactory;
-    protected $table = "post";
     protected $guarded = ['id'];
     protected $dates = ['created_at'];
 

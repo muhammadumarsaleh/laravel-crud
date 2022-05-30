@@ -27,6 +27,21 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="role">Category</label>
+                                        <select name="role" class="form-control" id="role">
+                                            <option selected>Pilih...</option>
+                                            <option value="Profil Sekolah">Profil Sekolah</option>
+                                            <option value="Info PPDB">Info PPDB</option>
+                                            <option value="Prestasi">Prestasi</option>
+                                            <option value="Kegiatan">Kegiatan</option>
+                                            <option value="Extrakurikuler">Extrakurikuler</option>
+                                            <option value="Smart School">Smart School</option>
+                                            <option value="Galeri">Galeri</option>
+                                            <option value="Blog">Blog</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="floatingTextarea2">Content</label>
                                         <textarea name="content" class="form-control @error('content') is-invalid @enderror" placeholder="Masukkan content" id="content" style="height: 100px">{{ old('content') }}</textarea>
                                         @error('content')
@@ -42,7 +57,7 @@
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                             <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                                <i class="fa fa-picture-o"></i> Choose
+                                                <i class="fa fa-picture-o"></i>Pilih
                                             </a>
                                         </span>
                                         <input id="thumbnail" class="form-control" type="text" name="thumbnail">

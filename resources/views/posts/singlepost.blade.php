@@ -91,82 +91,27 @@
                       <h3>Berita Terbaru</h3>
                       <div class="mu-related-item-area">
                         <div id="mu-related-item-slide">
+                        @foreach($allpost as $singlepost)
                           <div class="col-md-6">
                             <article class="mu-blog-single-item">
                               <figure class="mu-blog-single-img">
                                 <a href="#"><img alt="img" src="assets/img/blog/blog-1.jpg"></a>
                                 <figcaption class="mu-blog-caption">
-                                  <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
+                                  <h3><a href="#">{{$singlepost->title}}</a></h3>
                                 </figcaption>                      
                               </figure>
                               <div class="mu-blog-meta">
-                                <a href="#">By Admin</a>
+                                <a href="#">By {{$singlepost->user->name}}</a>
                                 <a href="#">02 June 2016</a>
                                 <span><i class="fa fa-comments-o"></i>87</span>
                               </div>
                               <div class="mu-blog-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
+                                <p>{{$singlepost->excerpt}}</p>
                                 <a href="#" class="mu-read-more-btn">Read More</a>
                               </div>
                             </article>
                           </div>
-                          <div class="col-md-6">
-                            <article class="mu-blog-single-item">
-                              <figure class="mu-blog-single-img">
-                                <a href="#"><img alt="img" src="assets/img/blog/blog-2.jpg"></a>
-                                <figcaption class="mu-blog-caption">
-                                  <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                                </figcaption>                      
-                              </figure>
-                              <div class="mu-blog-meta">
-                                <a href="#">By Admin</a>
-                                <a href="#">02 June 2016</a>
-                                <span><i class="fa fa-comments-o"></i>87</span>
-                              </div>
-                              <div class="mu-blog-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                                <a href="#" class="mu-read-more-btn">Read More</a>
-                              </div>
-                            </article>
-                          </div>
-                          <div class="col-md-6">
-                           <article class="mu-blog-single-item">
-                              <figure class="mu-blog-single-img">
-                                <a href="#"><img alt="img" src="assets/img/blog/blog-3.jpg"></a>
-                                <figcaption class="mu-blog-caption">
-                                  <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                                </figcaption>                      
-                              </figure>
-                              <div class="mu-blog-meta">
-                                <a href="#">By Admin</a>
-                                <a href="#">02 June 2016</a>
-                                <span><i class="fa fa-comments-o"></i>87</span>
-                              </div>
-                              <div class="mu-blog-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                                <a href="#" class="mu-read-more-btn">Read More</a>
-                              </div>
-                            </article>
-                          </div>
-                          <div class="col-md-6">
-                            <article class="mu-blog-single-item">
-                              <figure class="mu-blog-single-img">
-                                <a href="#"><img alt="img" src="assets/img/blog/blog-1.jpg"></a>
-                                <figcaption class="mu-blog-caption">
-                                  <h3><a href="#">Lorem ipsum dolor sit amet.</a></h3>
-                                </figcaption>                      
-                              </figure>
-                              <div class="mu-blog-meta">
-                                <a href="#">By Admin</a>
-                                <a href="#">02 June 2016</a>
-                                <span><i class="fa fa-comments-o"></i>87</span>
-                              </div>
-                              <div class="mu-blog-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ipsum non voluptatum eum repellendus quod aliquid. Vitae, dolorum voluptate quis repudiandae eos molestiae dolores enim.</p>
-                                <a href="#" class="mu-read-more-btn">Read More</a>
-                              </div>
-                            </article>
-                          </div>
+                        @endforeach
                         </div>
                       </div>
                     </div>
@@ -178,16 +123,26 @@
                   <div class="col-md-12">
                     <div class="mu-comments-area">
                       <h3>5 Comments</h3>
+                      @auth
+                        <form action="" method="POST" style="margin-top:10px;" id="komentar-utama2">
+                            @csrf
+                            <input type="hidden" name="post_id" value="">
+                            <input type="hidden" name="parent" value="0">
+                            <textarea name="konten" class="form-control" id="komentar-utama2" rows="4" placeholder="Masukkan komentar"></textarea>
+                            <button class="btn btn-primary" style="margin-top:5px;">Kirim</button>
+                        </form>
+                      @endauth
                       <div class="comments">
+                        
                         <ul class="commentlist">
-                          <li>
+                          <li>       
                             <div class="media">
                               <div class="media-left">    
                                 <img alt="img" src="assets/img/testimonial-1.png" class="media-object news-img">
                               </div>
                               <div class="media-body">
                                <h4 class="author-name">David Muller</h4>
-                               <span class="comments-date"> Posted on 12th June, 2016</span>
+                               <span class="comments-date">{{$post->created_at->diffForHumans()}}</span>
                                <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
                                <a class="reply-btn" href="#">Reply <span class="fa fa-long-arrow-right"></span></a>
                               </div>

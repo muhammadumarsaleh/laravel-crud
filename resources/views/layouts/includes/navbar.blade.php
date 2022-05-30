@@ -26,15 +26,12 @@
 								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
 								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
 								<li><a href="#" class="more">See all notifications</a></li>
-							</ul>
+							</ul> 
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Help</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Basic Use</a></li>
-								<li><a href="#">Working With Data</a></li>
-								<li><a href="#">Security</a></li>
-								<li><a href="#">Troubleshooting</a></li>
+								<li><a href="#" data-toggle="modal" data-target="#myModal">Saran dan Masukan</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -45,7 +42,7 @@
 							/images/default.png
 							@endif
 							"
-							class="img-circle" alt="Avatar"><span>{{ auth()->user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							class="img-circle" width="18" height="22"><span>{{ auth()->user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="/profilsaya"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<!-- <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li> -->
@@ -62,3 +59,33 @@
 				</div>
 			</div>
 		</nav>
+
+
+	<!-- MODAL TAMBAH NILAI -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong>Masukkan Tanggapan</strong></h4>
+    	</div>
+    	<div class="modal-body">
+		<form action="/tanggapan" method="POST">
+				@csrf
+					<div class="form-group">
+                                <label for="floatingTextarea2">Tanggapan anda tentang Skansap</label>
+                                <textarea name="konten" class="form-control @error('konten') is-invalid @enderror" placeholder="Masukkan tanggapan" id="floatingTextarea2" style="height: 100px">{{ old('konten') }}</textarea>
+                                @error('konten')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+      		</div>
+    	<div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Kirim</button>
+	</form>
+      </div>
+    </div>
+  </div>
+</div>

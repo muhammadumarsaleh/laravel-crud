@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Forum;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -19,7 +20,13 @@ class ForumController extends Controller
     }
 
     public function view(Forum $forum) {
-
         return view('forum.view', ['forum' => $forum]);
+    }
+
+    public function postkomentar(Request $request) {
+        $request->request->add(['user_id' => auth()->user()->id]);
+        // dd($request->all());
+        $komentar = Komentar::create($request->all());
+        return redirect()->back()->with('sukses', 'Komentar berhasil ditambahkan');
     }
 }

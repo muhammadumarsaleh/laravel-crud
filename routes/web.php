@@ -8,6 +8,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TanggapanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,6 @@ Route::get('/', [SiteController::class, 'home']);
 Route::get('/about', [SiteController::class, 'about']);
 Route::get('/register', [SiteController::class, 'register']);
 Route::post('/postregister', [SiteController::class, 'postregister']);
-
-
 
 
 // Route::get('/', [AuthController::class, 'login']);
@@ -61,5 +60,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:admin,siswa']], function(){
     Route::get('/forum', [ForumController::class, 'index']);
     Route::post('forum/create', [ForumController::class, 'create']);
     Route::get('forum/{forum}/view', [ForumController::class, 'view']);
+    Route::post('forum/{forum}/view', [ForumController::class, 'postkomentar']);
+
+    Route::post('/tanggapan', [TanggapanController::class, 'tanggapan']);
 });
 

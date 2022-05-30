@@ -73,7 +73,7 @@
       </div>
       <div class="modal-body">
       <form action="/siswa/create" method="POST" enctype="multipart/form-data">
-                    {{csrf_field()}}
+                    @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
                                 <input name="nama_depan" type="text" class="form-control @error('nama_depan') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Depan" required autofocus value="{{ old('nama_depan') }}">

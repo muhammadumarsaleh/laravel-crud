@@ -15,14 +15,14 @@
                                 </div>
                             @endif -->
                             <div class="right">
-                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah Mahasiswa</a>
+                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Tambah Forum</a>
                             </div>
                         </div>
                             <div class="panel-body">
 									<ul class="list-unstyled activity-list">
                                         @foreach($forum as $frm)
 										<li>
-											<img src="{{ $frm->user->siswa->getAvatar() }}" alt="Avatar" class="img-circle pull-left avatar">
+											<img src="{{ $frm->user->siswa->getAvatar() }}" width="30" height="39" class="img-circle pull-left avatar">
 											<p><a href="/forum/{{ $frm->id }}/view">{{ $frm->user->name }} : {{ $frm->judul }} </a><span class="timestamp">{{ $frm->created_at->diffForHumans() }}</span></p>
 										</li>
                                         @endforeach
@@ -38,7 +38,7 @@
 
 
     <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Buat Forum</button>
         </form>
       </div>
     </div>
